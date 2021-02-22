@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const users = require("./routes/api/users");
 const bodyParser = require("body-parser");
 const User = require("./models/User");
-
+const passport = require("passport");
+const path = require("path");
 
 mongoose
     .connect(db, {
@@ -20,6 +21,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req,res) => {res.send('Hello World')});
+
+app.use(passport.initialize());
+require("./config/passport")(passport);
 
 app.use("/api/users", users);
 
