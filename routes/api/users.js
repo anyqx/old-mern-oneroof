@@ -18,7 +18,9 @@ router.get(
   (req, res) => {
     res.json({
       id: req.user.id,
-      handle: req.user.handle,
+      username: req.user.username,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
       email: req.user.email,
     });
   }
@@ -38,7 +40,9 @@ router.post("/register", (req, res) => {
         .json({ email: "A user is already registered with that email" });
     } else {
       const newUser = new User({
-        handle: req.body.handle,
+        username: req.body.username,
+        firstName: req.body.firstName,            
+        lastName: req.body.lastName,              
         email: req.body.email,
         password: req.body.password,
       });
@@ -76,7 +80,7 @@ router.post("/login", (req, res) => {
       if (isMatch) {
         const payload = {
           id: user.id,
-          handle: user.handle,
+          username: user.username,
           email: user.email,
         };
         jwt.sign(
