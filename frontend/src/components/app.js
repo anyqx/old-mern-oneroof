@@ -9,6 +9,9 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ProfileContainer from "./profile/profile_container";
 import TweetComposeContainer from "./tweets/tweet_compose_container";
+import HouseCreateContainer from "./house/house_create_container";
+import HouseContainer from './house/house_container';
+
 
 const App = () => (
   <div>
@@ -17,7 +20,8 @@ const App = () => (
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-
+      <ProtectedRoute exact path="/new_house" component={HouseCreateContainer} />
+      <ProtectedRoute exact path="/houses" component={HouseContainer} />
       <ProtectedRoute exact path="/tweets" component={TweetsContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <ProtectedRoute

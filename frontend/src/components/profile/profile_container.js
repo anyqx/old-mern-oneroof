@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import { fetchUserTweets } from '../../actions/tweet_actions';
+import { fetchUserHouses } from '../../actions/house_actions';
 import Profile from './profile';
 
 const mapStateToProps = (state) => {
   return {
-    tweets: Object.values(state.tweets.user),
+    tweets: Object.values(state.houses.user),
     currentUser: state.session.user
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUserTweets: id => dispatch(fetchUserTweets(id))
+    fetchUserHouses: id => dispatch(fetchUserHouses(id))
   };
 };
 
