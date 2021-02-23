@@ -1,29 +1,29 @@
 import React from 'react';
-import TweetBox from './tweet_box';
+import PostBox from './post_box';
 
-class TweetCompose extends React.Component {
+class PostCompose extends React.Component {
   constructor(props) {
       super(props);
 
       this.state = {
           text: "",
-          newTweet: ""
+          newPost: ""
       }
 
       this.handleSubmit = this.handleSubmit.bind(this);
   } 
 
   componentWillReceiveProps(nextProps) {
-      this.setState({newTweet: nextProps.newTweet.text});
+      this.setState({newPost: nextProps.newPost.text});
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    let tweet = {
+    let post = {
       text: this.state.text
     };
 
-    this.props.composeTweet(tweet); 
+    this.props.composePost(post); 
     this.setState({text: ''})
   }
 
@@ -41,16 +41,16 @@ class TweetCompose extends React.Component {
                     <input type="textarea"
                         value={this.state.text}
                         onChange={this.update()}
-                        placeholder="Write your tweet..."
+                        placeholder="Write your post..."
                     />
                     <input type="submit" value="Submit" />
                 </div>
             </form>
             <br />
-            <TweetBox text={this.state.newTweet} />
+            <PostBox text={this.state.newPost} />
         </div>
     )
   }
 }
 
-export default TweetCompose;
+export default PostCompose;
