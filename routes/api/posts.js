@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
-const Tweet = require("../../models/Tweet");
+const Tweet = require("../../models/Post");
 const validateTweetInput = require("../../validation/tweets");
 
 router.get("/test", (req, res) => {
