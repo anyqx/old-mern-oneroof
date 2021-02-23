@@ -12,7 +12,7 @@ const PostSchema = new Schema({
   },
   is_expired: {
     type: Boolean,
-    required: true,
+    default: false,
   },
   date: {
     type: Date,
