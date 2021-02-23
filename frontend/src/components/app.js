@@ -22,7 +22,7 @@ const App = () => (
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <ProtectedRoute
         exact
-        path="/new_tweet"
+        path="/new_post"
         component={PostComposeContainer}
       />
     </Switch>

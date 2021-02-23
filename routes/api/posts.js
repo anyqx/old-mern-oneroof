@@ -28,7 +28,7 @@ router.get("/:id", (req, res) => {
   Post.findById(req.params.id)
     .then((post) => res.json(post))
     .catch((err) =>
-      res.status(404).json({ notweetfound: "No post found with that ID" })
+      res.status(404).json({ nopostfound: "No post found with that ID" })
     );
 });
 
