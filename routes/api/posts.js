@@ -2,33 +2,33 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
-const Tweet = require("../../models/Post");
-const validateTweetInput = require("../../validation/tweets");
+const Post = require("../../models/Post");
+const validatePostInput = require("../../validation/posts");
 
 router.get("/test", (req, res) => {
-  res.json({ msg: "This is the tweets route" });
+  res.json({ msg: "This is the posts route" });
 });
 
 router.get("/", (req, res) => {
-  Tweet.find()
+  Post.find()
     .sort({ date: -1 })
-    .then((tweets) => res.json(tweets))
-    .catch((err) => res.status(404).json({ notweetsfound: "No tweets found" }));
+    .then((posts) => res.json(posts))
+    .catch((err) => res.status(404).json({ nopostsfound: "No posts found" }));
 });
 
 router.get("/user/:user_id", (req, res) => {
-  Tweet.find({ user: req.params.user_id })
-    .then((tweets) => res.json(tweets))
+  Post.find({ user: req.params.user_id })
+    .then((posts) => res.json(posts))
     .catch((err) =>
-      res.status(404).json({ notweetsfound: "No tweets found from that user" })
+      res.status(404).json({ nopostsfound: "No posts found from that user" })
     );
 });
 
 router.get("/:id", (req, res) => {
-  Tweet.findById(req.params.id)
-    .then((tweet) => res.json(tweet))
+  Post.findById(req.params.id)
+    .then((post) => res.json(post))
     .catch((err) =>
-      res.status(404).json({ notweetfound: "No tweet found with that ID" })
+      res.status(404).json({ notweetfound: "No post found with that ID" })
     );
 });
 
@@ -36,18 +36,18 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const { errors, isValid } = validateTweetInput(req.body);
+    const { errors, isValid } = validatePostInput(req.body);
 
     if (!isValid) {
       return res.status(400).json(errors);
     }
 
-    const newTweet = new Tweet({
+    const newPost = new Post({
       user: req.user.id,
       text: req.body.text,
     });
 
-    newTweet.save().then((tweet) => res.json(tweet));
+    newPost.save().then((post) => res.json(post));
   }
 );
 
