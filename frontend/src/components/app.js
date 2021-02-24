@@ -23,11 +23,8 @@ const App = () => (
       <ProtectedRoute exact path="/houses" component={HouseContainer} />
       <ProtectedRoute exact path="/posts" component={PostsContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-      <ProtectedRoute
-        exact
-        path="/new_post"
-        component={PostComposeContainer}
-      />
+      <ProtectedRoute exact path="/new_post" component={PostComposeContainer}/>
+      {/* <ProtectedRoute exeact path='/new_chore' component={}/> */}
     </Switch>
   </div>
 );

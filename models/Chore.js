@@ -12,7 +12,7 @@ const ChoreSchema = new Schema({
   },
   is_done: {
       type: Boolean,
-      required: true,
+      default: false,
   },
   body: {
     type: String,
