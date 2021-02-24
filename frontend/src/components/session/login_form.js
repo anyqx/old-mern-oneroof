@@ -75,6 +75,9 @@ class LoginForm extends React.Component {
             {this.renderErrors()}
           </div>
         </form>
+        <footer>
+          Copyright &copy; 2021 OneRoof
+        </footer>
       </div>
     );
   }

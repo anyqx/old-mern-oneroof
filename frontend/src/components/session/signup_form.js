@@ -69,18 +69,21 @@ class SignupForm extends React.Component {
                 onChange={this.update('firstName')}
                 placeholder="First Name"
               />
+              <br />
 
               <input type="text"
                 value={this.state.lastName}
                 onChange={this.update('lastName')}
                 placeholder="Last Name"
               />
+              <br />
 
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 placeholder="Username"
               />
+              <br />
             
               <input type="text"
                 value={this.state.email}
@@ -104,6 +107,9 @@ class SignupForm extends React.Component {
             {this.renderErrors()}
           </div>
         </form>
+        <footer>
+          Copyright &copy; 2021 OneRoof
+        </footer>
       </div>
     );
   }

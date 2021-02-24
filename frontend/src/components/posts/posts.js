@@ -29,6 +29,9 @@ class Post extends React.Component {
           {this.state.posts.map(post => (
             <PostBox key={post._id} text={post.text} />
           ))}
+          <footer>
+            Copyright &copy; 2021 OneRoof
+          </footer>
         </div>
       );
     }
